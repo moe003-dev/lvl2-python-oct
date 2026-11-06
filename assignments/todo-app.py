@@ -13,8 +13,11 @@ while True:
 
     if choice == "1":
         todo = input("To-do: ").strip().capitalize()
-        database.append(todo)
-        print("To-do added")
+        if todo == "":
+            print("to-do cannot be empty")
+        else:
+            database.append(todo)
+            print("To-do added")
     elif choice == "2":
         print("\nTo-do list")
         num = 1
@@ -22,7 +25,9 @@ while True:
             print(f"{num}. {items}")
             num += 1
     elif choice == "3":
-        continue
+        edit_choice = int(input("Enter the number of the to-do you wish to edit: ").strip())
+        new_todo = input("Enter the new to-do: ").strip().capitalize()
+        database[edit_choice - 1] = new_todo
     elif choice == "4":
         delete_choice = int(input("Enter the number of the to-do to be deleted: ").strip())
         database.pop(delete_choice - 1)           
@@ -31,3 +36,7 @@ while True:
         break
     else:
         print("Please, Enter a valid option from those provided above")
+
+
+
+# create a condition to check if user input for to-do is empty
